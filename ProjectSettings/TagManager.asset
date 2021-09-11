@@ -8,6 +8,7 @@ TagManager:
   - YellowDalle
   - RedDalle
   - Halte
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2396238877
+    locked: 0
+  - name: Decor
+    uniqueID: 3351010281
+    locked: 0
+  - name: Interactible
+    uniqueID: 2846353971
+    locked: 0
+  - name: Player
+    uniqueID: 3896589469
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3456697497
+    locked: 0
+  - name: Lighting
+    uniqueID: 1700286347
     locked: 0
