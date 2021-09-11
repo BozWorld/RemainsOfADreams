@@ -15,7 +15,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     ""name"": ""PlayerInput"",
     ""maps"": [
         {
-            ""name"": ""Movement"",
+            ""name"": ""Player"",
             ""id"": ""ec2fe0b1-22c6-4f37-bc4d-72e4b77db461"",
             ""actions"": [
                 {
@@ -25,6 +25,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""29518d56-d909-4853-b8ac-00f33c74205e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Stop"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b18b036-f46d-456a-9c6b-152d0a930c5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -137,31 +153,48 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""Interact"",
-            ""id"": ""4ce90b25-f193-4b3a-8551-f1377f677a4f"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""756a6d01-a687-427b-b765-39edb2c6c686"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""bf25b0e1-ea92-46f0-b7b3-6ec82d28d889"",
-                    ""path"": """",
+                    ""id"": ""3eb65684-9fc3-4ee9-adbd-faea0c4ab939"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c7a48b6-024a-452f-af8b-e6306f6d400b"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d375831f-87a7-4634-8d85-ce68db6ab775"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Stop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""922deeda-913b-44b9-bb45-ea70ad0f4587"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox"",
+                    ""action"": ""Stop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -187,12 +220,11 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Movement
-        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
-        // Interact
-        m_Interact = asset.FindActionMap("Interact", throwIfNotFound: true);
-        m_Interact_Newaction = m_Interact.FindAction("New action", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Stop = m_Player.FindAction("Stop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -239,71 +271,54 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Movement
-    private readonly InputActionMap m_Movement;
-    private IMovementActions m_MovementActionsCallbackInterface;
-    private readonly InputAction m_Movement_Move;
-    public struct MovementActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Stop;
+    public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
-        public MovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Movement_Move;
-        public InputActionMap Get() { return m_Wrapper.m_Movement; }
+        public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Stop => m_Wrapper.m_Player_Stop;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
-        public void SetCallbacks(IMovementActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_MovementActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
+                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Stop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStop;
+                @Stop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStop;
+                @Stop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStop;
             }
-            m_Wrapper.m_MovementActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Stop.started += instance.OnStop;
+                @Stop.performed += instance.OnStop;
+                @Stop.canceled += instance.OnStop;
             }
         }
     }
-    public MovementActions @Movement => new MovementActions(this);
-
-    // Interact
-    private readonly InputActionMap m_Interact;
-    private IInteractActions m_InteractActionsCallbackInterface;
-    private readonly InputAction m_Interact_Newaction;
-    public struct InteractActions
-    {
-        private @PlayerInput m_Wrapper;
-        public InteractActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Interact_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Interact; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InteractActions set) { return set.Get(); }
-        public void SetCallbacks(IInteractActions instance)
-        {
-            if (m_Wrapper.m_InteractActionsCallbackInterface != null)
-            {
-                @Newaction.started -= m_Wrapper.m_InteractActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_InteractActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_InteractActionsCallbackInterface.OnNewaction;
-            }
-            m_Wrapper.m_InteractActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
-            }
-        }
-    }
-    public InteractActions @Interact => new InteractActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -322,12 +337,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
-    public interface IMovementActions
+    public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-    }
-    public interface IInteractActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnStop(InputAction.CallbackContext context);
     }
 }

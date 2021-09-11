@@ -2,7 +2,7 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Movement",
+            "name": "Player",
             "id": "ec2fe0b1-22c6-4f37-bc4d-72e4b77db461",
             "actions": [
                 {
@@ -12,6 +12,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "29518d56-d909-4853-b8ac-00f33c74205e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Stop",
+                    "type": "Button",
+                    "id": "7b18b036-f46d-456a-9c6b-152d0a930c5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -124,31 +140,48 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Interact",
-            "id": "4ce90b25-f193-4b3a-8551-f1377f677a4f",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "756a6d01-a687-427b-b765-39edb2c6c686",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "bf25b0e1-ea92-46f0-b7b3-6ec82d28d889",
-                    "path": "",
+                    "id": "3eb65684-9fc3-4ee9-adbd-faea0c4ab939",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c7a48b6-024a-452f-af8b-e6306f6d400b",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d375831f-87a7-4634-8d85-ce68db6ab775",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "922deeda-913b-44b9-bb45-ea70ad0f4587",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
