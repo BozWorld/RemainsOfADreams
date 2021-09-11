@@ -75,7 +75,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""6dbf3e28-9604-4982-8d51-1e7742c4ab9c"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
