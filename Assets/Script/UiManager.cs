@@ -7,6 +7,7 @@ using TMPro;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance;
+    public TransitionTween transitionTween;
     public GameObject test;
 
     void Awake ()

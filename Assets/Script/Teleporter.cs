@@ -34,9 +34,15 @@ public class Teleporter : MonoBehaviour
         private void InteractObject() 
     {
         if(canInteract == true){
-        PlayerController.Instance.transform.position = teleportationPoint.position;
-        canInteract = false;
+            UiManager.Instance.transitionTween.fade(Teleportation);
+            
+            canInteract = false;
         }
         
     }
+
+        private void Teleportation()
+        {
+            PlayerController.Instance.transform.position = teleportationPoint.position; 
+        }
 }
