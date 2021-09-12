@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float speed = 10f;
 
     public Animator animator;
-    private Vector2 moveInput;
+
     private float moveSpeed = 5;
 
     private void Awake () {
@@ -32,20 +32,12 @@ public class PlayerController : MonoBehaviour {
         playerInput.Disable();
     }
 
-    public void Update()
-    {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-
-
-        animator.SetFloat("Horizontal", moveInput.x);
-        animator.SetFloat("Vertical", moveInput.y);
-        animator.SetFloat("Speed", moveInput.sqrMagnitude);
-    }
-
     void FixedUpdate() 
     {
         Vector2 moveInput = playerInput.Player.Move.ReadValue<Vector2>();
+        animator.SetFloat("Horizontal", moveInput.x);
+        animator.SetFloat("Vertical", moveInput.y);
+        animator.SetFloat("Speed", moveInput.sqrMagnitude);
         rb.velocity = moveInput * speed;
     }
 
@@ -54,14 +46,14 @@ public class PlayerController : MonoBehaviour {
         if(canInteract == true)
         {
             UiManager.Instance.test.SetActive(true);
-            Debug.Log("i win");
         }
             
     }
 
     private void StopInteraction()
     {
-        if(canInteract == true){
+        if(canInteract == true)
+        {
             UiManager.Instance.test.SetActive(false);
         }
     }
