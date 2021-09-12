@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
     private bool canInteract;
     [SerializeField] private float speed = 10f;
 
+    public Animator animator;
+    private Vector2 moveInput;
+    private float moveSpeed = 5;
+
     private void Awake () {
         playerInput = new PlayerInput ();
         playerInput.Player.Interact.performed += _ => InteractObject();
@@ -26,6 +30,17 @@ public class PlayerController : MonoBehaviour {
     private void OnDisable() 
     {
         playerInput.Disable();
+    }
+
+    public void Update()
+    {
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
+
+
+        animator.SetFloat("Horizontal", moveInput.x);
+        animator.SetFloat("Vertical", moveInput.y);
+        animator.SetFloat("Speed", moveInput.sqrMagnitude);
     }
 
     void FixedUpdate() 

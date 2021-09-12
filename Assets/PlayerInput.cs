@@ -47,8 +47,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Moving"",
                     ""id"": ""11de0c63-ca3c-4ef7-afb2-5b07299a3bc7"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Move"",

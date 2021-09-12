@@ -8,35 +8,18 @@ public class BallBahevior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-        Debug.Log("ca marche ?");
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce (0, 0);
-
-            var magnitude = 25;
-
-            var force = transform.position - collision.transform.position;
-
-            force.Normalize();
-            GetComponent<Rigidbody2D>().AddForce(-force * magnitude);
-            Debug.Log("ca marche, vraiment ?");
-        }
-
-        if(collision.gameObject.tag == "Stop")
-        {
-          
-        }*/
 
         Debug.Log("Collision!");
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(0, forceApplied, 0);
+            forceApplied = 50;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * forceApplied);
         }
-
+        
         if (collision.gameObject.tag == "Halte")
         {
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(0, 0, 0);
+            forceApplied = 0;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * forceApplied);
         }
     }
 }
