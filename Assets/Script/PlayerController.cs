@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour {
 
     public Animator animator;
 
-    private float moveSpeed = 5;
-
     private void Awake () {
         playerInput = new PlayerInput ();
         playerInput.Player.Interact.performed += _ => InteractObject();
@@ -51,6 +49,7 @@ public class PlayerController : MonoBehaviour {
         if(canInteract == true)
         {
             UiManager.Instance.test.SetActive(true);
+            UiManager.Instance.transitionTween.scaleIn(UiManager.Instance.test);
         }
             
     }
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(canInteract == true)
         {
-            UiManager.Instance.test.SetActive(false);
+            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.test);
         }
     }
 
@@ -72,8 +71,9 @@ public class PlayerController : MonoBehaviour {
     }
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.CompareTag("Object")){
+            Debug.Log("loose");
             canInteract = false;
-            UiManager.Instance.test.SetActive(false);
+            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.test);
         }
     }
 }

@@ -181,7 +181,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000044703484, y: -0.014757585}
+  m_Offset: {x: 0.0012192652, y: 0.005524397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -192,7 +192,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2361114, y: 0.23998535}
+  m_Size: {x: 0.20440881, y: 0.21101111}
   m_EdgeRadius: 0
 --- !u!1 &132781233
 GameObject:
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -259,7 +259,7 @@ RectTransform:
   m_GameObject: {fileID: 132781233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.963109, y: 5.4221, z: 5.4221}
+  m_LocalScale: {x: 19.178984, y: 10.031427, z: 5.4221}
   m_Children: []
   m_Father: {fileID: 1695852667}
   m_RootOrder: 1
@@ -322,7 +322,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.207807
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 705011879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0.60515, y: 0.60515, z: 0.60515}
+  m_LocalScale: {x: 0.60515, y: 0.9909331, z: 0.60515}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -449,7 +449,6 @@ GameObject:
   m_Component:
   - component: {fileID: 749431566}
   - component: {fileID: 749431565}
-  - component: {fileID: 749431568}
   - component: {fileID: 749431567}
   m_Layer: 0
   m_Name: box-cave
@@ -550,19 +549,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &749431568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749431564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50cd34410a0d894a958e8bb6add83bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportationPoint: {fileID: 0}
 --- !u!1 &1145248192
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +635,6 @@ GameObject:
   - component: {fileID: 1695852668}
   - component: {fileID: 1695852669}
   - component: {fileID: 1695852670}
-  - component: {fileID: 1695852671}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -714,7 +699,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -751,6 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37ed933eacd850488eaaf2b58f5b7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionTween: {fileID: 1695852670}
   test: {fileID: 2056375886}
 --- !u!95 &1695852669
 Animator:
@@ -783,22 +769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07078dc4c265f048adbde05764a10d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 132781233}
-  canvasGroup: {fileID: 1695852671}
-  tweening: 1
+  background: {fileID: 132781234}
+  easeFade: 1
+  easeScale: 34
   fadeTime: 1
---- !u!225 &1695852671
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695852663}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  scaleTime: 2
 --- !u!1 &1888860546
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2056375887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -900,7 +875,7 @@ RectTransform:
   m_GameObject: {fileID: 2056375886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1695852667}
   m_RootOrder: 0
