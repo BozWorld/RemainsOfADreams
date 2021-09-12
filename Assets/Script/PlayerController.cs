@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private bool canInteract;
+    public static PlayerController Instance;
     [SerializeField] private float speed = 10f;
 
     public Animator animator;
@@ -18,6 +19,10 @@ public class PlayerController : MonoBehaviour {
         playerInput.Player.Interact.performed += _ => InteractObject();
         playerInput.Player.Stop.canceled += _ => StopInteraction();
         rb = GetComponent<Rigidbody2D> ();
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy (gameObject);
     }
 
     private void OnEnable () 
