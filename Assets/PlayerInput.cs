@@ -58,7 +58,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""d8eea6d8-a98b-4fcb-a54b-c2ae32792286"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -80,7 +80,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""6e290baf-f100-4aeb-8ca9-9cc7cb824646"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
