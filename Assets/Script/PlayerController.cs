@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
 
     public Animator animator;
 
+
+
     private void Awake () {
         playerInput = new PlayerInput ();
         playerInput.Player.Interact.performed += _ => InteractObject();
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour {
         if(collision.gameObject.CompareTag("Object")){
             canInteract = true;
         }
-        
+
     }
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.CompareTag("Object")){
