@@ -25,11 +25,11 @@ public class TransitionTween : MonoBehaviour
 
     public void scaleIn(GameObject obj)
     {
-        LeanTween.scale(obj, new Vector3(1, 1, 1), scaleTime).setEase(easeScale);
+        LeanTween.scale(obj, new Vector3(3.6313f, 3.6313f, 3.6313f), scaleTime).setEase(easeScale);
     }
 
     public void scaleOut(GameObject obj)
     {
-        LeanTween.scale(obj, new Vector3(0, 0, 0), scaleTime).setEase(easeScale);
+        LeanTween.scale(obj, new Vector3(0f, 0f, 0f), scaleTime).setEase(easeScale);
     }
 }

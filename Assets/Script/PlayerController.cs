@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         if(canInteract == true)
         {
             UiManager.Instance.test.SetActive(true);
-            UiManager.Instance.transitionTween.scaleIn(UiManager.Instance.test);
+            UiManager.Instance.transitionTween.scaleIn(UiManager.Instance.image);
         }
             
     }
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(canInteract == true)
         {
-            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.test);
+            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.image);
         }
     }
 
@@ -70,13 +70,13 @@ public class PlayerController : MonoBehaviour {
         if(collision.gameObject.CompareTag("Object")){
             canInteract = true;
         }
-
+        
     }
     private void OnTriggerExit2D(Collider2D collision) {
         if(collision.gameObject.CompareTag("Object")){
             Debug.Log("loose");
             canInteract = false;
-            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.test);
+            UiManager.Instance.transitionTween.scaleOut(UiManager.Instance.image);
         }
     }
 }
