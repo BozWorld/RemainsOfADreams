@@ -19,7 +19,7 @@ public class Teleporter : MonoBehaviour
         
     }
     private void OnTriggerExit2D(Collider2D collision) {
-        if(collision.gameObject.CompareTag("Object")){
+        if(collision.gameObject.CompareTag("Player")){
             canInteract = false;
         }
     }
