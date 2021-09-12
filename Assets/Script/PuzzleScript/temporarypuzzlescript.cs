@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class temporarypuzzlescript : MonoBehaviour
 {
-    public float Dalle = 0;
 
     public GameObject reactivateGreen;
     public GameObject reactivateYellow;

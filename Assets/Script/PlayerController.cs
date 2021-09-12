@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public Animator animator;
 
 
+    public float Dalle = 0;
 
     private void Awake () {
         playerInput = new PlayerInput ();
