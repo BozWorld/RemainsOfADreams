@@ -9,6 +9,7 @@ TagManager:
   - RedDalle
   - Halte
   - Object
+  - Reactivate
   layers:
   - Default
   - TransparentFX

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedTilePuzzle : temporarypuzzlescript
+public class RedTilePuzzle : MonoBehaviour
 {
     public GameObject me;
     public GameObject Block;
+    public Animator him;
+
+    public PlayerController player;
 
     // Update is called once per frame
     void Update()
@@ -17,21 +20,21 @@ public class RedTilePuzzle : temporarypuzzlescript
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Dalle == 1)
+            if (player.Dalle == 1)
             {
                 Block.SetActive(true);
                 him.SetBool("UP", true);
                 me.SetActive(false);
             }
-            if (Dalle == 3)
+            if (player.Dalle == 3)
             {
                 Block.SetActive(true);
                 him.SetBool("UP", true);
                 me.SetActive(false);
             }
-            if (Dalle == 2)
+            if (player.Dalle == 2)
             {
-                Dalle = 3;
+                player.Dalle = 3;
                 me.SetActive(false);
             }
         }
