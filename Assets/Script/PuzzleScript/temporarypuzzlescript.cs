@@ -45,7 +45,6 @@ public class temporarypuzzlescript : MonoBehaviour
             player.Dalle = 0;
             Block.SetActive(false);
             him.SetBool("Down", true);
-            Debug.Log("Marche connard !");
         }
     }
 }
