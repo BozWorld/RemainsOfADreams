@@ -16,7 +16,12 @@ public class PlatesPuzzle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameEvent.current.onPlatesPuzzle += OnPlatesPuzzle;
+    }
+
+    private void OnPlatesPuzzle()
+    {
+
     }
 
     // Update is called once per frame
